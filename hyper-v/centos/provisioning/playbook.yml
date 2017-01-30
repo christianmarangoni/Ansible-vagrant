@@ -1,0 +1,13 @@
+---
+- hosts: centos
+  become: yes
+  tasks:
+
+
+        - hostname:
+          name: centos1
+
+  vars_files:
+    - vars.yml
+
+
