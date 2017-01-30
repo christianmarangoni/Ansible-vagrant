@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
+  config.vm.box = "mwrock/Windows2016"
+  config.ssh.insert_key = false
+
+  config.vm.hostname = "win2016"
+  config.vm.network :private_network, ip: "192.168.33.22"
+
+
+  config.vm.provider :hyperv do |v|
+    v.name = "win2016"
+    v.memory = 512
+    v.cpus = 2
+  end
+
+  # Ansible provisioner.
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "v"
+    ansible.playbook = "provisioning/playbook.yml"
+    ansible.sudo = true
+  end
+
+end

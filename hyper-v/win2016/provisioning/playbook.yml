@@ -1,0 +1,13 @@
+---
+- hosts: rh
+  become: yes
+  tasks:
+
+
+        - hostname:
+          name: rh7-1
+
+  vars_files:
+    - vars.yml
+
+
