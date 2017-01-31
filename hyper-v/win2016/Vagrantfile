@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
 
 
   config.vm.provider :hyperv do |v|
-    v.name = "win2016"
+    v.vmname = "win2016"
     v.memory = 512
     v.cpus = 2
   end
