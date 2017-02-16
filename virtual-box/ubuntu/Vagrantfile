@@ -16,12 +16,3 @@ Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
     v.memory = 1024
     v.cpus = 2
   end
-
-  # Ansible provisioner.
-  config.vm.provision "ansible" do |ansible|
-    ansible.verbose = "v"
-    ansible.playbook = "provisioning/playbook.yml"
-    ansible.sudo = true
-  end
-
-end
