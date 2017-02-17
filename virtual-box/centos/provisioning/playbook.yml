@@ -1,13 +1,29 @@
 ---
 - hosts: centos
+  gather_facts: yes
   become: yes
+
+
   tasks:
+  - name: disable selinux
+    command: /sbin/setenforce 0
+
+  - name: disable firewalld
+    systemd:
+    state: stopped
+    name: crond
 
 
-        - hostname:
-          name: centos1
 
   vars_files:
-    - vars.yml
+    - vars/main.yml
+
+  pre_tasks:
+    - name: Update apt cache if needed.
+
+
+  roles:
+
+
 
 
