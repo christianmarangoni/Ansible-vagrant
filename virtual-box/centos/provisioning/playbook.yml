@@ -5,23 +5,14 @@
 
 
   tasks:
-  - name: disable selinux
-    command: /sbin/setenforce 0
-
-  - name: disable firewalld
-    systemd:
-    state: stopped
-    enabled: no
-    name: firewalld
 
 
 
-  vars_files:
-    - vars/main.yml
+  - systemd:
+      state: started
+      enabled: yes
+      name: firewalld
 
-
-
-  roles:
 
 
 
