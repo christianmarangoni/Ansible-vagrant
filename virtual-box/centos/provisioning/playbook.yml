@@ -11,15 +11,14 @@
   - name: disable firewalld
     systemd:
     state: stopped
-    name: crond
+    enabled: no
+    name: firewalld
 
 
 
   vars_files:
     - vars/main.yml
 
-  pre_tasks:
-    - name: Update apt cache if needed.
 
 
   roles:
