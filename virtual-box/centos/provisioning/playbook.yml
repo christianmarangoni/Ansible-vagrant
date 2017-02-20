@@ -3,14 +3,9 @@
   gather_facts: yes
   become: yes
 
-
-  tasks:
-
-
-
   - systemd:
       state: started
-      enabled: yes
+      enabled: no
       name: firewalld
 
 
