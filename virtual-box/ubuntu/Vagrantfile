@@ -2,31 +2,11 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-# inizio prima vm
+
+    config.vm.hostname = "ubuntu"
 
     config.vm.define "one" do |one|
-    one.vm.box = "ubuntu/xenial64"
-    one.ssh.insert_key = false
-    one.vm.hostname = "one"
-    one.vm.network :private_network, ip: "192.168.33.101"
-      one.vm.provider :virtualbox do |va|
-          va.name = "uno"
-          va.memory = 1024
-          va.cpus = 2
-      end
+        one.vm.box = "ubuntu/xenial64"
     end
 
-# inizio seconda vm
-
-    config.vm.define "two" do |two|
-      two.vm.box = "ubuntu/xenial64"
-      two.ssh.insert_key = false
-      two.vm.hostname = "two"
-      two.vm.network :private_network, ip: "192.168.33.102"
-       two.vm.provider :virtualbox do |vb|
-        vb.name = "due"
-        vb.memory = 1024
-        vb.cpus = 2
-        end
-    end
 end
