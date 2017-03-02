@@ -1,29 +1,31 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+
 Vagrant.configure("2") do |config|
 
-    config.vm.define "one" do |one|
-        one.vm.box = "opentable/win-2012r2-datacenter-amd64-nocm"
-        one.vm.hostname = "vmone"
-        one.vm.network :private_network, ip: "192.168.33.11"
-            one.vm.provider "virtualbox" do |va|
-                va.name = "VM1"
-                va.memory = 1024
-                va.cpus = 2
-            end
-    end
+config.vm.box = "opentable/win-2012r2-datacenter-amd64-nocm"
 
-    config.vm.define "two" do |two|
-        two.vm.box = "opentable/win-2012r2-datacenter-amd64-nocm"
-        two.vm.hostname = "vmtwo"
-        two.vm.network :private_network, ip: "192.168.33.22"
-            two.vm.provider "virtualbox" do |vb|
-                vb.name = "VM2"
-                vb.memory = 1024
-                vb.cpus = 2
-            end
-    end
+  # config.vm.box_check_update = false
+
+config.vm.network "forwarded_port", guest: 80, host: 8080
+
+config.vm.network "private_network", ip: "192.168.33.10"
+
+config.vm.synced_folder "../data", "/vagrant_data"
 
 
+config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
+    vb.memory = "1024"
+end
+
+config.push.define "atlas" do |push|
+   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
+end
+
+ config.vm.provision "shell", inline: <<-SHELL
+   apt-get update
+   apt-get install -y apache2
+ SHELL
 end
