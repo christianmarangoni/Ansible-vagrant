@@ -8,6 +8,12 @@
       enabled: no
       name: firewalld
 
+  - copy:
+    src: /home/christianmarangoni/src/pippo.txt
+    dest: /etc/pippo.txt
+    owner: root
+    group: root
+    mode: 775
 
 
 
