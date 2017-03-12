@@ -1,20 +1,12 @@
 ---
-- hosts: centos
-  gather_facts: yes
-  become: yes
-
-  - systemd:
-      state: started
-      enabled: no
-      name: firewalld
-
-  - copy:
-    src: /home/christianmarangoni/src/pippo.txt
-    dest: /etc/pippo.txt
-    owner: root
-    group: root
-    mode: 775
-
-
-
-
+- name: Sxcat deployments
+  hosts: centos
+  tags: always
+  tasks:
+    - name: copy iso
+      copy:
+        src: /home/christianmarangoni/src/pippo.txt
+        dest: /etc/pippo.txt
+        owner: root
+        group: root
+        mode: 775
