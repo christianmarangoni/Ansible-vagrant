@@ -1,6 +1,6 @@
 ---
-- name: centos
-  hosts: centos
+- name: default
+  hosts: default
   tags: always
   tasks:
     - name: copy iso
