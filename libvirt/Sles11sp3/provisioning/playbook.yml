@@ -1,11 +1,11 @@
 ---
-- hosts: rh
+- hosts: sles11
   become: yes
   tasks:
 
 
         - hostname:
-          name: rh7-1
+          name: sles11
 
   vars_files:
     - vars.yml

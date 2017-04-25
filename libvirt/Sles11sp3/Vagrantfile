@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
   config.vm.box = "suse/sles11sp3"
   config.ssh.insert_key = false
 
-  config.vm.hostname = "rh7-1"
+  config.vm.hostname = "sles11"
   config.vm.network :private_network, ip: "192.168.33.22"
 
 

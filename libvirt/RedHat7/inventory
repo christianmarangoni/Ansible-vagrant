@@ -1,1 +1,0 @@
-rh7-1 ansible_ssh_host=192.168.33.22 ansible_ssh_port=22
