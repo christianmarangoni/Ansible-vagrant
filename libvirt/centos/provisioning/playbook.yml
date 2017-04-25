@@ -1,0 +1,12 @@
+---
+- name: Sxcat deployments
+  hosts: centos
+  tags: always
+  tasks:
+    - name: copy iso
+      copy:
+        src: /home/christianmarangoni/src/pippo.txt
+        dest: /etc/pippo.txt
+        owner: root
+        group: root
+        mode: 775
