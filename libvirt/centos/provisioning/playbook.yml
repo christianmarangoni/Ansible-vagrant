@@ -1,8 +1,10 @@
 ---
 - name: default
   hosts: default
+  become: yes
   tags: always
   tasks:
     - hostname:
         name: centos
+      become: true
 
