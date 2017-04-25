@@ -1,5 +1,5 @@
 ---
-- name: Sxcat deployments
+- name: centos
   hosts: centos
   tags: always
   tasks:
