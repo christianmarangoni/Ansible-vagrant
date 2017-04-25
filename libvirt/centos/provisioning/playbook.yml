@@ -5,6 +5,7 @@
   tags: always
   tasks:
     - hostname:
-        name: centos
+        name: spacewalk
       become: true
+    -
 
