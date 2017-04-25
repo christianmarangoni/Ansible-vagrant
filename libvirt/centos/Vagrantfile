@@ -4,7 +4,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
-  config.vm.box = "geerlingguy/centos7"
+  config.vm.box = "centos/7"
   config.ssh.insert_key = false
 
   config.vm.hostname = "centos"
@@ -13,12 +13,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
     libvirt.driver = "kvm"
     libvirt.storage_pool_name = "default"
   end
-
-  # Ansible provisioner.
-  #config.vm.provision "ansible" do |ansible|
-  #  ansible.verbose = "v"
-  #  ansible.playbook = "provisioning/playbook.yml"
-  #  ansible.sudo = true
-  #end
 
 end
