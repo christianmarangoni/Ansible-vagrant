@@ -1,6 +1,6 @@
 ---
-- name: default
-  hosts: default
+- name: spacewalk-server
+  hosts: spacewalk-server
   become: yes
   tasks:
     - hostname:
