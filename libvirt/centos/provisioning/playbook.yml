@@ -16,7 +16,6 @@
       - 5222
       - 5269
 
----
 - hosts: spacewalk-server
   sudo: yes
 
