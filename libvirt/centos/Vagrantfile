@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
         domain.memory = 4096
         domain.cpus = 2
         domain.nested = true
-        domain.host = "spacewalk-server"
+        domain.host = "centos"
         domain.volume_cache = 'none'
      end
   end
