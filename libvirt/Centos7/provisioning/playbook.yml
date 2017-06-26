@@ -1,0 +1,45 @@
+---
+- hosts: default
+  become: yes
+
+
+  tasks:
+
+    - name: upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+
+    - name: change hostname
+      hostname:
+        name: openstack1
+
+    - name: Add repository from rpm
+      yum:
+        name: https://rdo.fedorapeople.org/rdo-release.rpm
+        state: present
+
+
+    - name: disable network manager
+      systemd:
+        name: NetworkManager
+        state: stopped
+        enabled: no
+
+    - name: Add repository from rpm
+      yum:
+        name: openstack-packstack
+        state: present
+
+
+    - name: This command will change the working directory to somedir/ and will only run when somedir/somelog.txt doesn't exist.
+      shell: packstack --allinone 2>&1 /tmp/packstack.log
+      args:
+        chdir:
+        creates: packstack.log
+
+
+  vars_files:
+    - vars.yml
+
+
