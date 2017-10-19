@@ -4,11 +4,20 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
-  config.vm.box = "generic/rhel7"
-  config.ssh.insert_key = false
+  config.vm.define :gluster1 do | gluster1 |
+    gluster1.vm.box = "generic/rhel7"
+    gluster1.ssh.insert_key = false
+    gluster1.vm.hostname = "gluster1rhel7"
+    gluster1.vm.network :private_network, ip: "192.168.33.21"
+    end
 
-  config.vm.hostname = "rhel7"
-  config.vm.network :private_network, ip: "192.168.33.22"
+  config.vm.define :gluster2 do | gluster2 |
+    gluster2.vm.box = "generic/rhel7"
+    gluster2.ssh.insert_key = false
+    gluster2.vm.hostname = "gluster2rhel7"
+    gluster2.vm.network :private_network, ip: "192.168.33.23"
+    end
+
 
 
   config.vm.provider :libvirt do |libvirt|
@@ -17,10 +26,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
   end
 
   # Ansible provisioner.
-  #config.vm.provision "ansible" do |ansible|
-  #  ansible.verbose = "v"
-  #  ansible.playbook = "provisioning/playbook.yml"
-  #  ansible.sudo = true
-  #end
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "v"
+    ansible.playbook = "provisioning/playbook.yml"
+    ansible.groups = {
+    "app_servers" => ["gluster1", "gluster2"],
+    }
+    ansible.sudo = true
+  end
+
+
 
 end
