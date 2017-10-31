@@ -19,7 +19,7 @@ Vagrant.configure(API_VERSION) do |config|
     config.vm.define "guest" do |guest|
         guest.vm.box = BOX
         guest.vm.hostname = HOSTNAME
-        guest.vm.network :private_network, ip: HOST_IP
+        guest.vm.network :private_network, ip: GUEST_IP
         guest.vm.provider "virtualbox" do |virtualbox|
             virtualbox.name = HOSTNAME
             virtualbox.memory = RAM
