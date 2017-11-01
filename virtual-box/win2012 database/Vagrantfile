@@ -13,6 +13,7 @@ Vagrant.configure(API_VERSION) do |config|
     config.vm.boot_timeout = 600
     config.vm.graceful_halt_timeout = 600
     config.vm.network :forwarded_port, host_ip: HOST_IP, guest_ip: GUEST_IP, guest: 3389, host: 33389
+    config.vm.network :forwarded_port, host_ip: HOST_IP, guest_ip: GUEST_IP, guest: 5986, host: 55986,
     config.vm.network :forwarded_port, host_ip: HOST_IP, guest_ip: GUEST_IP, guest: 5985, host: 55985, id: "winrm", 
     auto_correct: true
 
