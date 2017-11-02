@@ -9,13 +9,6 @@ CPU = "2"
 
 Vagrant.configure(API_VERSION) do |config|
     config.vm.guest = :windows
-    config.vm.communicator = "winrm"
-    config.vm.boot_timeout = 600
-    config.vm.graceful_halt_timeout = 600
-    config.vm.network :forwarded_port, host_ip: HOST_IP, guest_ip: GUEST_IP, guest: 3389, host: 33389
-
-    config.vm.network :forwarded_port, host_ip: HOST_IP, guest_ip: GUEST_IP, guest: 5985, host: 55985, id: "winrm", 
-    auto_correct: true
 
     config.vm.define "guest" do |guest|
         guest.vm.box = BOX
@@ -26,6 +19,15 @@ Vagrant.configure(API_VERSION) do |config|
             virtualbox.memory = RAM
             virtualbox.cpus = CPU
         end    
+
+    config.vm.communicator = "winrm"
+    config.vm.boot_timeout = 600
+    config.vm.graceful_halt_timeout = 600
+    config.vm.network :forwarded_port, host_ip: HOST_IP, guest_ip: GUEST_IP, guest: 3389, host: 33389
+
+    config.vm.network :forwarded_port, host_ip: HOST_IP, guest_ip: GUEST_IP, guest: 5985, host: 55985, id: "winrm", 
+    auto_correct: true
+
     end 
         
     config.vm.provision "ansible" do |ansible|
@@ -33,4 +35,4 @@ Vagrant.configure(API_VERSION) do |config|
        ansible.playbook = "provisioning/playbook.yml"
 
     end
-end
+enddestroy
