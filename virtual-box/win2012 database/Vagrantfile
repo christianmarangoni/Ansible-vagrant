@@ -30,7 +30,7 @@ Vagrant.configure(API_VERSION) do |config|
 
 
 
-    pippo
+    
 
     end 
         
