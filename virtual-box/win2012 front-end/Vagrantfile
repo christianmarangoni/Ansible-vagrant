@@ -1,34 +1,45 @@
 API_VERSION = "2"
-GUEST_IP = "192.168.33.12"
+GUEST_IP = "192.168.33.11"
 HOST_IP = "192.168.33.1"
 HOSTNAME = "windb1"
-BOX = "chrism/win2012-r2-x64"
-RAM = "2048"
+BOX = "MC/win2012-r2-x64-A"
+RAM = "1024"
 CPU = "2"
 
+
 Vagrant.configure(API_VERSION) do |config|
-    config.vm.guest = :windows
-    config.vm.communicator = "winrm"
-    config.vm.boot_timeout = 600
-    config.vm.graceful_halt_timeout = 600
-    config.vm.network :forwarded_port, host_ip: HOST_IP, guest: 3389, host: 33389
-    config.vm.network :forwarded_port, host_ip: HOST_IP, guest: 5985, host: 55985, id: "winrm", 
-    auto_correct: true
 
-    config.vm.define "guest" do |guest|
-        guest.vm.box = BOX
-        guest.vm.hostname = HOSTNAME
-        guest.vm.network :private_network, ip: GUEST_IP
-        guest.vm.provider "virtualbox" do |virtualbox|
-            virtualbox.name = HOSTNAME
-            virtualbox.memory = RAM
-            virtualbox.cpus = CPU
-        end    
-    end 
-        
-    config.vm.provision "ansible" do |ansible|
-       ansible.verbose = "v"
-       ansible.playbook = "provisioning/playbook.yml"
+  config.vm.guest = :windows
+  config.vm.communicator = :winrm
 
-    end
+  config.vm.box = BOX
+
+  config.vm.network :forwarded_port, guest: 3389, host: 33389
+  config.vm.network :forwarded_port, guest: 5986, host: 55986
+  config.vm.network :forwarded_port, guest: 5985, host: 55985, id: "winrm",
+  auto_correct: true
+
+  config.vm.guest = :windows
+  config.vm.communicator = "winrm"
+  config.vm.boot_timeout = 600
+  config.vm.graceful_halt_timeout = 600
+
+  config.vm.provider :virtualbox do |vb|
+    vb.cpus = CPU
+    vb.memory = RAM
+    vb.name = HOSTNAME
+
+  config.vm.hostname = HOSTNAME
+
+ 
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "v"
+    ansible.playbook = "provisioning/playbook.yml"
+
+  end
+
+
 end
+
