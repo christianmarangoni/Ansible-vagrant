@@ -1,29 +1,23 @@
 ---
-- name: Install and start Apache HTTPD
+- name: Install and start Apache {{ webservice }}
   hosts: web
   vars_files:
       - vars/vars.yml
 
   tasks:
-    - name: httpd package is present
+    - name: package is present {{ webservice }} 
       yum:
-        name: httpd
+      name: "{{ webservice }}"
         state: present
-
+        
     - name: correct index.html is present
       copy:
         src: files/index.html
-        dest: /var/www/html/index.html
+        dest: "{{ destination }}"
 
-    - name: httpd is started
+    - name: {{ webservice }} is started
       service:
-        name: httpd
+        name: "{{ webservice }}"
         state: started
         enabled: true
-
-
-
-
-
-
 
