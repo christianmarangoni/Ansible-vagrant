@@ -3,3 +3,10 @@
 destination: /var/www/html/index.html
 webservice: httpd
 
+#arrays
+
+users:
+  bjones:
+    first_name: Bob
+    last_name: Jones
+    home_dir: /users/bjones
