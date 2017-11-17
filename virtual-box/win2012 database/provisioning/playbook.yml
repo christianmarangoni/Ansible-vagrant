@@ -1,6 +1,8 @@
 ---
 - name: Install and start Apache HTTPD
   hosts: web
+  vars_files:
+      - vars/vars.yml
 
   tasks:
     - name: httpd package is present
@@ -22,7 +24,6 @@
 
 
 
-  vars_files:
-    - vars.yml
+
 
 
