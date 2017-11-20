@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
+  config.vm.box = "geerlingguy/centos7"
+ 
+
+  config.vm.hostname = "Ansible"
+  config.vm.network :private_network, ip: "10.2.0.11"
+
+
+  config.vm.provider :virtualbox do |ansible|
+    ansible.name = "centos7"
+    ansible.memory = 2048
+    ansible.cpus = 2
+  end
+
+end
