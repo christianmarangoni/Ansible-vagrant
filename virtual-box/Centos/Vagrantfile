@@ -9,6 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
 
   config.vm.hostname = "Ansible"
   config.vm.network :private_network, ip: "10.2.0.11"
+  config.vm.synced_folder "$HOME/vagrant/", "C:/Users/maranch/Documents/Codeproject/Ansible-Play",
 
 
   config.vm.provider :virtualbox do |ansible|
