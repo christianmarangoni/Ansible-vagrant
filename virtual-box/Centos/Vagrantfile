@@ -4,10 +4,10 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
-  config.vm.box = "geerlingguy/centos7"
+  config.vm.box = "chrismar/Centos7A"
  
 
-  config.vm.hostname = "Ansible"
+  config.vm.hostname = "centos7"
   config.vm.synced_folder "C:/Users/maranch/Documents/Codeproject/Ansible-Play", "/vagrant"
   config.vm.network :private_network, ip: "10.2.0.11"
   
@@ -17,6 +17,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
     ansible.name = "centos7"
     ansible.memory = 2048
     ansible.cpus = 2
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "v"
+    ansible.playbook = "provisioning/main.yml"
+
   end
 
 end
