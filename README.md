@@ -23,4 +23,23 @@ Virtual machine for different hypervisor with vagrant
 ## VMs/Apps Currently Present
 
  TBD
-  
+
+### WSL Enviroment ####
+
+Enable WSL 
+https://msdn.microsoft.com/en-us/commandline/wsl/install-win10
+
+Install Vagrant on wsl 
+
+https://www.vagrantup.com/docs/other/wsl.html
+
+add thi step 
+
+Install Vagrant and check if you can run the windows native VirtualBox cli tool.
+sudo apt-get install Vagrant export PATH=$PATH:"/mnt/c/Program Files/Oracle/VirtualBox" VBoxManage.exe
+
+Since vagrant requires the executable to be called VBoxManage, I've linked it at /usr/bin
+sudo ln -s "/mnt/c/Program Files/Oracle/VirtualBox/VBoxManage.exe" /usr/bin/VBoxManage VBoxManage
+
+
+
