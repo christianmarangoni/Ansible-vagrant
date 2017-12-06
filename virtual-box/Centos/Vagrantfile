@@ -1,6 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
@@ -8,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
  
 
   config.vm.hostname = "centos7"
-  config.vm.synced_folder "C:/Users/maranch/Documents/Codeproject/Ansible-Play", "/vagrant"
+  config.vm.synced_folder ENV['%ANSIBLE_PLAY%'], "/vagrant"
   config.vm.network :private_network, ip: "10.2.0.11"
   
 
