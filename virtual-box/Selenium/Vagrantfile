@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
+  config.vm.box = "chrismar/Centos7A"
+ 
+
+  config.vm.hostname = "Selenoid"
+  
+  config.vm.network :private_network, ip: "10.2.0.11"
+  
+
+
+  config.vm.provider :virtualbox do |selenoid|
+    selenoid.name = "centos7"
+    selenoid.memory = 2048
+    selenoid.cpus = 2
+  end
+
+end

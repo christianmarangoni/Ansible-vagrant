@@ -1,0 +1,4 @@
+---
+- hosts: centos7
+  roles:
+    - guacamole
