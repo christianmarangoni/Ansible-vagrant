@@ -2,7 +2,7 @@ API_VERSION = "2"
 GUEST_IP = "192.168.33.11"
 HOST_IP = "192.168.33.1"
 HOSTNAME = "windb1"
-BOX = "MC/win2012-r2-x64-A"
+BOX = "chrismar/win2012-r2-x64"
 RAM = "1024"
 CPU = "2"
 
