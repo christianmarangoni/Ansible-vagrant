@@ -1,4 +1,10 @@
 ---
-- hosts: centos7
+
+- hosts: monitoring
+
+
+
+
   roles:
-    - guacamole
+  - ping
+

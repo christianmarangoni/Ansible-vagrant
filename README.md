@@ -33,6 +33,9 @@ Install Vagrant on wsl
 
 https://www.vagrantup.com/docs/other/wsl.html
 
+Windows Access 
+export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+
 add thi step 
 
 Install Vagrant and check if you can run the windows native VirtualBox cli tool.
