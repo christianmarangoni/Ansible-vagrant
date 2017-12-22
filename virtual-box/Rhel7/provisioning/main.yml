@@ -1,0 +1,10 @@
+---
+
+- hosts: monitoring
+
+
+
+
+  roles:
+  - ping
+

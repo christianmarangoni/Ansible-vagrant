@@ -1,0 +1,8 @@
+---
+- hosts: centos7
+  tasks:
+    - name: 
+      ping:
+        
+
+      
