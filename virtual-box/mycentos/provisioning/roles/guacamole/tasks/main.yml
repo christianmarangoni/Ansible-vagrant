@@ -1,0 +1,30 @@
+---
+- hosts: centos7
+  tasks:
+    - name: Add yum repository
+      yum_repository:
+        name: epel 
+        description: EPEL Yum Repo
+        baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+        
+      notify:
+        - yum update
+
+    - name: Install guacamole requirments
+      yum:
+        name: wget
+        state: latest
+
+    - name: Download Guacamole Script
+      get_url:
+        url: http://sourceforge.net/projects/guacamoleinstallscript/files/CentOS/guacamole-install-script.sh
+        dest: /tmp
+        mode: 0755
+
+    - name:  execute guacamole script
+      shell: guacamole-install-script.sh >> guacamole.log
+      args:
+        chdir: /tmp
+        creates: guacamole.log
+
+      

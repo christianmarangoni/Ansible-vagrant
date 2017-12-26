@@ -1,0 +1,31 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION ) do |config|
+  config.vm.box = "chrismar/Centos7A"
+  config.vm.box_version = "1.0.0"
+ 
+
+  config.vm.hostname = "centos7"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.network :private_network, ip: "10.2.0.11"
+ 
+  
+
+
+  config.vm.provider :virtualbox do |ansible|
+    ansible.name = "centos7"
+    ansible.memory = 2048
+    ansible.cpus = 2
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "v"
+    ansible.playbook = "provisioning/main.yml"
+
+  end
+
+
+end

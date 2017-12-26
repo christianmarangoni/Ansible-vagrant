@@ -2,7 +2,7 @@ API_VERSION = "2"
 GUEST_IP = "192.168.33.11"
 HOST_IP = "192.168.33.1"
 HOSTNAME = "windb1"
-BOX = "MC/win2012-r2-x64-A"
+BOX = "chrismar/win2012-r2-x64A"
 RAM = "1024"
 CPU = "2"
 
@@ -21,6 +21,7 @@ Vagrant.configure(API_VERSION) do |config|
 
   config.vm.guest = :windows
   config.vm.communicator = "winrm"
+
   config.vm.boot_timeout = 600
   config.vm.graceful_halt_timeout = 600
 
